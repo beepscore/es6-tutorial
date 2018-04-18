@@ -18,6 +18,7 @@
   "homepage": "https://github.com/beepscore/es6-tutorial#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0"
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }
