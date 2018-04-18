@@ -1,6 +1,9 @@
 let calculateMonthlyPayment = function (principal, years, rate) {
+    // ecmascript 5 "var" is scoped to entire function, even if within a {} block
+    // ecmascript 6 "let" is scoped to block {}
+    let monthlyRate = 0
     if (rate) {
-        let monthlyRate = rate / 100 / 12;
+        monthlyRate = rate / 100 / 12;
     }
     let monthlyPayment = principal * monthlyRate / (1 - (Math.pow(1 / (1 + monthlyRate), years * 12)));
     return monthlyPayment;
