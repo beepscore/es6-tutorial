@@ -1,4 +1,5 @@
-let calculateMonthlyPayment = function (principal, years, rate) {
+// use arrow function =>
+let calculateMonthlyPayment = (principal, years, rate) => {
     // ecmascript 5 "var" is scoped to entire function, even if within a {} block
     // ecmascript 6 "let" is scoped to block {}
     let monthlyRate = 0
@@ -9,7 +10,6 @@ let calculateMonthlyPayment = function (principal, years, rate) {
     return {principal, years, rate, monthlyPayment, monthlyRate};
 };
 
-// use arrow function =>
 let calculateAmortization = (principal, years, rate) => {
     // ecmascript 5 "var" is scoped to entire function, even if within a {} block
     // ecmascript 6 "let" is scoped to block {}

@@ -1,5 +1,6 @@
 'use strict';
 
+// use arrow function =>
 var calculateMonthlyPayment = function calculateMonthlyPayment(principal, years, rate) {
     // ecmascript 5 "var" is scoped to entire function, even if within a {} block
     // ecmascript 6 "let" is scoped to block {}
@@ -11,6 +12,34 @@ var calculateMonthlyPayment = function calculateMonthlyPayment(principal, years,
     return { principal: principal, years: years, rate: rate, monthlyPayment: monthlyPayment, monthlyRate: monthlyRate };
 };
 
+var calculateAmortization = function calculateAmortization(principal, years, rate) {
+    // ecmascript 5 "var" is scoped to entire function, even if within a {} block
+    // ecmascript 6 "let" is scoped to block {}
+    var _calculateMonthlyPaym = calculateMonthlyPayment(principal, years, rate),
+        monthlyRate = _calculateMonthlyPaym.monthlyRate,
+        monthlyPayment = _calculateMonthlyPaym.monthlyPayment;
+
+    var balance = principal;
+    var amortization = [];
+    for (var y = 0; y < years; y++) {
+        // interest payment for year y
+        var interestY = 0;
+        // principal payment for year y
+        var principalY = 0;
+        for (var m = 0; m < 12; m++) {
+            // interest payment for month m
+            var interestM = balance * monthlyRate;
+            // principal payment for month m
+            var principalM = monthlyPayment - interestM;
+            interestY = interestY + interestM;
+            principalY = principalY + principalM;
+            balance = balance - principalM;
+        }
+        amortization.push({ principalY: principalY, interestY: interestY, balance: balance });
+    }
+    return { monthlyPayment: monthlyPayment, monthlyRate: monthlyRate, amortization: amortization };
+};
+
 document.getElementById('calcBtn').addEventListener('click', function () {
     var principal = document.getElementById("principal").value;
     var years = document.getElementById("years").value;
@@ -18,9 +47,9 @@ document.getElementById('calcBtn').addEventListener('click', function () {
 
     // use destructuring assignment to assign monthlyPayment and monthlyRate
 
-    var _calculateMonthlyPaym = calculateMonthlyPayment(principal, years, rate),
-        monthlyPayment = _calculateMonthlyPaym.monthlyPayment,
-        monthlyRate = _calculateMonthlyPaym.monthlyRate;
+    var _calculateMonthlyPaym2 = calculateMonthlyPayment(principal, years, rate),
+        monthlyPayment = _calculateMonthlyPaym2.monthlyPayment,
+        monthlyRate = _calculateMonthlyPaym2.monthlyRate;
 
     document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
     document.getElementById("monthlyRate").innerHTML = (monthlyRate * 100).toFixed(2);
