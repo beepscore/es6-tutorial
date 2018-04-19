@@ -25,3 +25,14 @@ http://ccoenraets.github.io/es6-tutorial/classes/
 
 ## Using Promises
 http://ccoenraets.github.io/es6-tutorial/promises/
+
+## start local server
+package.json scripts defines start
+
+    npm start
+
+## build and run
+package.json scripts defines babel
+
+    npm run babel
+
