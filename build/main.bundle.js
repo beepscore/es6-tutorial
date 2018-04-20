@@ -45,12 +45,16 @@ document.getElementById('calcBtn').addEventListener('click', function () {
     var years = document.getElementById("years").value;
     var rate = document.getElementById("rate").value;
 
-    // use destructuring assignment to assign monthlyPayment and monthlyRate
+    // use destructuring assignment to assign multiple variables
 
-    var _calculateMonthlyPaym2 = calculateMonthlyPayment(principal, years, rate),
-        monthlyPayment = _calculateMonthlyPaym2.monthlyPayment,
-        monthlyRate = _calculateMonthlyPaym2.monthlyRate;
+    var _calculateAmortizatio = calculateAmortization(principal, years, rate),
+        monthlyPayment = _calculateAmortizatio.monthlyPayment,
+        monthlyRate = _calculateAmortizatio.monthlyRate,
+        amortization = _calculateAmortizatio.amortization;
 
     document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
     document.getElementById("monthlyRate").innerHTML = (monthlyRate * 100).toFixed(2);
+    amortization.forEach(function (month) {
+        return console.log(month);
+    });
 });
