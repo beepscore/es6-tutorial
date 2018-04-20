@@ -45,5 +45,6 @@ document.getElementById('calcBtn').addEventListener('click', () => {
 
     document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
     document.getElementById("monthlyRate").innerHTML = (monthlyRate * 100).toFixed(2);
+    // log is visible in browser / developer console
     amortization.forEach(month => console.log(month));
 });
